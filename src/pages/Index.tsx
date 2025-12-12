@@ -8,6 +8,7 @@ import Icon from '@/components/ui/icon';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { useNavigate } from 'react-router-dom';
 
 interface Client {
   id: number;
@@ -37,6 +38,7 @@ interface Service {
 }
 
 const Index = () => {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('dashboard');
 
   const clients: Client[] = [
@@ -94,6 +96,10 @@ const Index = () => {
             </div>
           </div>
           <div className="flex items-center gap-4">
+            <Button variant="ghost" size="sm" onClick={() => navigate('/')}>
+              <Icon name="ArrowLeft" size={16} className="mr-2" />
+              <span className="hidden sm:inline">На главную</span>
+            </Button>
             <Button variant="outline" size="sm" className="gap-2">
               <Icon name="Bell" size={16} />
               <span className="hidden sm:inline">Уведомления</span>
